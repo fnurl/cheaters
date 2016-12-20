@@ -46,14 +46,7 @@ var Cheaters = (function () {
 							.replace(/xOPT/g,'⌥')
 							.replace(/xSHIFT/g,'⇧')
 							.replace(/xCTRL/g,'^');
-						$('#container').html(
-							marked(mdText, {
-								smartLists: true,
-								breaks: true,
-								tables: true,
-								gfm: true
-							})
-						);
+						$('#container').html(remarkable.render(mdText));
 					} else {
 						$('#container').html(data);
 					}
