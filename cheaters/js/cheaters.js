@@ -39,9 +39,9 @@ var Cheaters = (function () {
 				$('#container').append($('<img>').attr('src',href));
 				$(document).scrollTop(0);
 			} else {
-				$('#container').load( href, function() {
+				$.get(href, function(data) {
 					if (/\.md$/.test(href)) {
-						var mdText = $('#container').text()
+						var mdText = data
 							.replace(/xCMD/g,'⌘')
 							.replace(/xOPT/g,'⌥')
 							.replace(/xSHIFT/g,'⇧')
@@ -54,6 +54,8 @@ var Cheaters = (function () {
 								gfm: true
 							})
 						);
+					} else {
+						$('#container').html(data);
 					}
 					$(document).scrollTop(0);
 				} );
@@ -78,9 +80,9 @@ var Cheaters = (function () {
 			return false;
 		});
 		// $('#menu select').on('change',function(e) {
-		// 	e.preventDefault();
-		// 	console.log($(this).val());
-		// 	switchActive($(this).val());
+		//	e.preventDefault();
+		//	console.log($(this).val());
+		//	switchActive($(this).val());
 		// })
 		$('#contrast').click(function(e){
 			e.preventDefault();
@@ -97,7 +99,7 @@ var Cheaters = (function () {
 			return false;
 		});
 		// $('body').on('click', function(ev) {
-		// 	$('#goto').remove();
+		//	$('#goto').remove();
 		// });
 	}
 
@@ -208,16 +210,16 @@ var Cheaters = (function () {
 
 			// $.each(headers, function(i, a) {
 
-			// 	if ((ev.which === 46 && $(a).offset().top - menuHeight > loc) ||
-			// 		(ev.which === 44 && $(a).offset().top - menuHeight < loc)) {
+			//	if ((ev.which === 46 && $(a).offset().top - menuHeight > loc) ||
+			//		(ev.which === 44 && $(a).offset().top - menuHeight < loc)) {
 
-			// 		$('html,body').animate({
-			// 			scrollTop: $(a).offset().top - menuHeight
-			// 		}, 'fast');
+			//		$('html,body').animate({
+			//			scrollTop: $(a).offset().top - menuHeight
+			//		}, 'fast');
 
-			// 		currentHeader = i;
-			// 		return false;
-			// 	}
+			//		currentHeader = i;
+			//		return false;
+			//	}
 			// });
 		});
 
@@ -239,7 +241,7 @@ var Cheaters = (function () {
 
 		Mousetrap.bind('command+i', function() {
 			$('#contrast').click();
-		})
+		});
 	}
 
 	function findStartPage() {
