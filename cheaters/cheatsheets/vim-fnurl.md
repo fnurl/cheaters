@@ -8,7 +8,8 @@ key             | description
 `<c-t>`         | open in tab
 `<c-s>`         | open in horizontal split
 `<c-v>`         | open in vertical split
-
+`<c-z>` | mark entry
+`<F7>` | delete buffer (marked or if no marked, entry under cursor)
 
 ### visual mode
 
